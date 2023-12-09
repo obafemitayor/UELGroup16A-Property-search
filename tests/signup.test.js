@@ -28,7 +28,7 @@ test('should renders SignUp Page correctly', () => {
   expect(screen.getByText('First Name')).toBeInTheDocument();
   expect(screen.getByText('Last Name')).toBeInTheDocument();
   expect(screen.getByText('Email Address')).toBeInTheDocument();
-  expect(screen.getByText('Password')).toBeInTheDocument();
+  expect(screen.getByText('Enter Password')).toBeInTheDocument();
   expect(screen.getByText('Confirm Password')).toBeInTheDocument();
   expect(screen.getByText('10 digit Mobile No.')).toBeInTheDocument();
 });
@@ -52,21 +52,19 @@ test('should successfully sign up user', async () => {
 
   render(<SignUp />);
 
-  await user.type(screen.getByTestId("first-name-input"), "Tayo");
-  await user.type(screen.getByTestId("last-name-input"), "Obafemi");
-  await user.type(screen.getByTestId("email-address-input"), "obafemitayor@gmail.com");
-  await user.type(screen.getByTestId("password-input"), "obafemi");
-  await user.type(screen.getByTestId("confirm-password-input"), "obafemi");
-  await user.type(screen.getByTestId("mobile-number-input"), "1234567890");
+  await user.type(screen.getByLabelText(/first name/i), "omotayo");
+  await user.type(screen.getByLabelText(/last name/i), "obafemi");
+  await user.type(screen.getByLabelText(/email address/i), "obafemitayor@gmail.com");
+  await user.type(screen.getByLabelText(/enter password/i), "password");
+  await user.type(screen.getByLabelText(/confirm password/i), "password");
+  await user.type(screen.getByLabelText(/10 digit mobile no./i), "1234567890");
 
-  await waitFor(async () => {
-    fireEvent.submit(screen.getByTestId("signup-form"));
-    
-  });
+  await user.click(screen.getByRole('button', { name: /sign up/i }));
 
   expect(mockGetDocs).toHaveBeenCalledWith(
     query(collection(db, "users"), where('email', '==', 'obafemitayor@gmail.com'))
   );
+
   expect(mockGetDocs).toHaveBeenCalledWith(
     query(collection(db, "users"), where('mobileNo', '==', '1234567890'))
   );

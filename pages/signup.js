@@ -160,7 +160,6 @@ export default function SignUp() {
                   value={state.firstName}
                   onChange={Inputchange}
                   autoFocus
-                  data-testid="first-name-input"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -173,7 +172,6 @@ export default function SignUp() {
                   onChange={Inputchange}
                   name="lastName"
                   autoComplete="family-name"
-                  data-testid="last-name-input"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -186,7 +184,6 @@ export default function SignUp() {
                   onChange={Inputchange}
                   name="email"
                   autoComplete="email"
-                  data-testid="email-address-input"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -194,13 +191,12 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Enter Password"
                   type="password"
                   value={state.password}
                   onChange={Inputchange}
                   id="password"
                   autoComplete="new-password"
-                  data-testid="password-input"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -214,7 +210,6 @@ export default function SignUp() {
                   onChange={(e) => setConfirmPass(e.target.value)}
                   id="confirmPassword"
                   autoComplete="confirm-password"
-                  data-testid="confirm-password-input"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -229,7 +224,6 @@ export default function SignUp() {
                   id="mobileNo"
                   autoComplete="mobile"
                   onKeyDown={handleKeyDown}
-                  data-testid="mobile-number-input"
                 />
               </Grid>
             </Grid>

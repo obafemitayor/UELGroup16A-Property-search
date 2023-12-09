@@ -54,8 +54,6 @@ const StepOne = ({ setEmirateDetails, emirateDetails }) => {
     }
   }, [selectedEmirate]);
 
-  console.log("emirateDetails: ", emirateDetails);
-
   return (
     <Box>
       <Flex alignItems="center">

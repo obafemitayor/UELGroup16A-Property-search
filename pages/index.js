@@ -69,7 +69,9 @@ export default function SignIn() {
     }
 
     setLoading(false);
+
     router.replace("/home");
+
     setdisable(false);
   };
 
@@ -92,7 +94,7 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={handleSubmit} data-testid="signout-form" sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
