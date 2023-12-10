@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useWizard } from "react-use-wizard";
+import { useWizard } from "../../lib/react-use-wizard";
 import {
   Box,
   Center,
@@ -79,6 +79,7 @@ const StepThree = ({ budget, setBudget, selectedArea }) => {
               type="number"
               onChange={handleChange}
               placeholder="Enter Budget"
+              label="Enter Budget"
               size="lg"
               w="50%"
             />

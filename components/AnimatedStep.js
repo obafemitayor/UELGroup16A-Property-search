@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import * as React from "react";
 
-import { useWizard } from "react-use-wizard";
+import { useWizard } from "../lib/react-use-wizard";
 
 const variants = {
   enter: (direction) => {

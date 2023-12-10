@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Wizard } from "react-use-wizard";
+import { Wizard } from "../lib/react-use-wizard";
 import { AnimatePresence } from "framer-motion";
 import AnimatedStep from "../components/AnimatedStep";
 import StepOne from "../components/Steps/StepOne";

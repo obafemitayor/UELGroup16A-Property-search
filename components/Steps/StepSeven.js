@@ -1,4 +1,4 @@
-import { useWizard } from "react-use-wizard";
+import { useWizard } from "../../lib/react-use-wizard";
 import { Box, Text, Flex, Center, Button, Select } from "@chakra-ui/react";
 import { baseUrl, fetchApi } from "../../utils/fetchApi";
 import { useState } from "react";

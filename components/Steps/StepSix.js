@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useWizard } from "react-use-wizard";
+import { useWizard } from "../../lib/react-use-wizard";
 import {
   Box,
   Text,

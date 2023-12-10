@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Box, Text, Flex, Center, Button, Select } from "@chakra-ui/react";
-import { useWizard } from "react-use-wizard";
+import { useWizard } from "../../lib/react-use-wizard";
 
 const StepFour = ({ selectedArea, emirateDetails, setFrquency, setQuery }) => {
   const { isLastStep, isFirstStep, previousStep, nextStep } = useWizard();

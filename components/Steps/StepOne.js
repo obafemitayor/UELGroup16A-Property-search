@@ -1,4 +1,4 @@
-import { useWizard } from "react-use-wizard";
+import { useWizard } from "../../lib/react-use-wizard";
 import { collection, getDocs } from "firebase/firestore";
 import {
   Box,

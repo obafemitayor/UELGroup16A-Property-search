@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useWizard } from "react-use-wizard";
+import { useWizard } from "../lib/react-use-wizard";
 import { Button, Box, Center } from "@chakra-ui/react";
 
 // const Button = styled.button`
