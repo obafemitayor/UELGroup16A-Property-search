@@ -15,6 +15,8 @@ import { useRouter } from "next/navigation";
 import { db } from "../utils/fireStore";
 import Loader from "../components/loader";
 
+const CryptoJS = require('crypto-js');
+
 const defaultTheme = createTheme();
 
 export default function SignUp() {
@@ -85,6 +87,8 @@ export default function SignUp() {
       setLoading(false);
       return;
     }
+
+    state.password = CryptoJS.SHA256(state.password).toString(CryptoJS.enc.Hex)
 
     await addDoc(collection(db, "users"), state);
 

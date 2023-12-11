@@ -3,7 +3,7 @@
  */
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { getDocs, query, collection, where } from "firebase/firestore";
+import { getDocs, addDoc, query, collection, where } from "firebase/firestore";
 import userEvent from "@testing-library/user-event";
 import SignUp from '../pages/signup';
 import { db } from "../utils/fireStore";
@@ -41,14 +41,20 @@ test('should display error when email is Invalid', () => {
   });
   
 test('should successfully sign up user', async () => {
+  const CryptoJS = require('crypto-js');
+
   const user = userEvent.setup()
 
   const mockGetDocs = jest.fn();
 
+  const mockAddDoc = jest.fn();
+
   mockGetDocs.mockResolvedValueOnce({ docs: []});
   mockGetDocs.mockResolvedValueOnce({docs: []});
+  mockAddDoc.mockResolvedValueOnce({docs: []});
 
   getDocs.mockImplementation(mockGetDocs);
+  addDoc.mockImplementation(mockAddDoc);
 
   render(<SignUp />);
 
@@ -68,5 +74,20 @@ test('should successfully sign up user', async () => {
   expect(mockGetDocs).toHaveBeenCalledWith(
     query(collection(db, "users"), where('mobileNo', '==', '1234567890'))
   );
+
+  expect(mockGetDocs).toHaveBeenCalledWith(
+    query(collection(db, "users"), where('mobileNo', '==', '1234567890'))
+  );
+
+  const password = CryptoJS.SHA256('password').toString(CryptoJS.enc.Hex)
+
+  expect(mockAddDoc).toHaveBeenCalledWith(collection(db, "users"), {
+    email: "obafemitayor@gmail.com",
+    firstName: "omotayo",
+    lastName: "obafemi",
+    mobileNo: "1234567890",
+    password,
+  });
+
   jest.resetAllMocks();
 });

@@ -2,6 +2,8 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../../utils/fireStore";
 
+const CryptoJS = require('crypto-js');
+
 export const authOptions = {
   secret: "SECRET",
   pages: {
@@ -28,8 +30,9 @@ export const authOptions = {
         },
       },
       async authorize(credentials, req) {
+        const hashedPassword = CryptoJS.SHA256(credentials.password).toString(CryptoJS.enc.Hex);
         const userSnapShot = await getDocs(query(collection(db, "users"), 
-        where('email', "==", credentials.email), where('password', '==', credentials.password)));
+        where('email', "==", credentials.email), where('password', '==', hashedPassword)));
         if (userSnapShot.docs.length > 0) {
           const data = userSnapShot.docs.map((doc) => ({
             ...doc.data(),
