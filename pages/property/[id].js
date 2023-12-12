@@ -12,7 +12,6 @@ import { collection, addDoc, getDocs, query, where} from "firebase/firestore";
 import { baseUrl, fetchApi } from '../../utils/fetchApi';
 import ImageScrollbar from '../../components/ImageScrollbar';
 import { db } from "../../utils/fireStore";
-import Loader from "../../components/loader";
 
 const PropertyDetails = ({ propertyDetails: { id, price, rentFrequency, rooms, title, baths, area, agency, isVerified, description, type, purpose, furnishingStatus, amenities, photos } }) => {
   const [hasSignifiedPurchase, setHasSignifiedPurchase] = useState(false);
@@ -41,7 +40,6 @@ const PropertyDetails = ({ propertyDetails: { id, price, rentFrequency, rooms, t
 
   return ( 
   <Box maxWidth='1000px' margin='auto' p='4'>
-    {loading && <Loader />}
   {photos && <ImageScrollbar data={photos} />}
   <Box w='full' p='6'>
     <Flex paddingTop='2' alignItems='center'>
@@ -89,7 +87,7 @@ const PropertyDetails = ({ propertyDetails: { id, price, rentFrequency, rooms, t
       </Flex>
   </Box>
   <Flex>
-    <Button onClick={() => purchaseProperty()} disabled={hasSignifiedPurchase}>Signify Interest</Button>
+    <Button onClick={() => purchaseProperty()} disabled={hasSignifiedPurchase} isLoading={loading}>Signify Interest</Button>
   </Flex>
 </Box>
 );
