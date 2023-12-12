@@ -7,7 +7,7 @@ const CryptoJS = require('crypto-js');
 export const authOptions = {
   secret: "SECRET",
   pages: {
-    signIn: "/login",
+    signIn: "/",
     signOut: "/auth/signout",
     error: "/auth/error", 
     verifyRequest: "/auth/verify-request",

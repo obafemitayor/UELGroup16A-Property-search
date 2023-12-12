@@ -49,7 +49,7 @@ const Navbar = () => {
                 </MenuItem>
               </Link>
             ) : (
-              <Link href="/login" passHref>
+              <Link href="/" passHref>
                 <MenuItem icon={<LoginIcon sx={{ fontSize: "17px" }} />}>
                   SignIn/SignUp
                 </MenuItem>
